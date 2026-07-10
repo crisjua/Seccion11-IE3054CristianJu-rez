@@ -9,8 +9,7 @@
 #ifndef DISPLAY_H_
 #define DISPLAY_H_
 
-
-
-
+void initDislayPorts(void);
+void display(uint8_t dig);
 
 #endif /* DISPLAY_H_ */
