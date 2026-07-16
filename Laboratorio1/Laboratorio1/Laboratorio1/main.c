@@ -21,6 +21,7 @@ void actualizarContadores(void);
 
 int main(void)
 {
+	UCSR0B &= ~((1 << RXEN0) | (1 << TXEN0));
 	//Configuracion inicial
 	initDislayPorts();
 	DDRB = 0x0F;
