@@ -1,0 +1,340 @@
+
+EsclavoPrueba.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  00000258  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000001e4  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000001  00800100  00800100  00000258  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000258  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000288  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000090  00000000  00000000  000002c8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000009a5  00000000  00000000  00000358  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000007e5  00000000  00000000  00000cfd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000004a4  00000000  00000000  000014e2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000118  00000000  00000000  00001988  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000454  00000000  00000000  00001aa0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000197  00000000  00000000  00001ef4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000060  00000000  00000000  0000208b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   8:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  10:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  14:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  18:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  1c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  20:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  24:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  28:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  2c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  30:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  34:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  38:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  3c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  40:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  44:	0c 94 86 00 	jmp	0x10c	; 0x10c <__vector_17>
+  48:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  4c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  50:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  54:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  58:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  5c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  60:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  64:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_clear_bss>:
+  74:	21 e0       	ldi	r18, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	01 c0       	rjmp	.+2      	; 0x7e <.do_clear_bss_start>
+
+0000007c <.do_clear_bss_loop>:
+  7c:	1d 92       	st	X+, r1
+
+0000007e <.do_clear_bss_start>:
+  7e:	a1 30       	cpi	r26, 0x01	; 1
+  80:	b2 07       	cpc	r27, r18
+  82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
+  84:	0e 94 64 00 	call	0xc8	; 0xc8 <main>
+  88:	0c 94 f0 00 	jmp	0x1e0	; 0x1e0 <_exit>
+
+0000008c <__bad_interrupt>:
+  8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000090 <ADC_init>:
+ *  Author: crist
+ */ 
+#include "ADC.h"
+
+void ADC_init(void) {
+	ADMUX = (1 << REFS0); // referencia AVcc
+  90:	80 e4       	ldi	r24, 0x40	; 64
+  92:	80 93 7c 00 	sts	0x007C, r24	; 0x80007c <__TEXT_REGION_LENGTH__+0x7f807c>
+	ADCSRA = (1 << ADEN) | (1 << ADPS2) | (1 << ADPS1); // habilitar ADC, prescaler 64
+  96:	86 e8       	ldi	r24, 0x86	; 134
+  98:	80 93 7a 00 	sts	0x007A, r24	; 0x80007a <__TEXT_REGION_LENGTH__+0x7f807a>
+  9c:	08 95       	ret
+
+0000009e <ADC_read>:
+}
+
+uint16_t ADC_read(uint8_t channel) {
+	ADMUX = (ADMUX & 0xF0) | (channel & 0x0F); // seleccionar canal
+  9e:	ec e7       	ldi	r30, 0x7C	; 124
+  a0:	f0 e0       	ldi	r31, 0x00	; 0
+  a2:	90 81       	ld	r25, Z
+  a4:	90 7f       	andi	r25, 0xF0	; 240
+  a6:	8f 70       	andi	r24, 0x0F	; 15
+  a8:	89 2b       	or	r24, r25
+  aa:	80 83       	st	Z, r24
+	ADCSRA |= (1 << ADSC); // iniciar conversión
+  ac:	ea e7       	ldi	r30, 0x7A	; 122
+  ae:	f0 e0       	ldi	r31, 0x00	; 0
+  b0:	80 81       	ld	r24, Z
+  b2:	80 64       	ori	r24, 0x40	; 64
+  b4:	80 83       	st	Z, r24
+	while(ADCSRA & (1 << ADSC)); // esperar fin
+  b6:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <__TEXT_REGION_LENGTH__+0x7f807a>
+  ba:	86 fd       	sbrc	r24, 6
+  bc:	fc cf       	rjmp	.-8      	; 0xb6 <ADC_read+0x18>
+	return ADC;
+  be:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <__TEXT_REGION_LENGTH__+0x7f8078>
+  c2:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7f8079>
+}
+  c6:	08 95       	ret
+
+000000c8 <main>:
+
+void refreshLEDs(uint8_t value);
+
+int main(void) {
+	// Configurar LEDs
+	DDRB |= (1 << DDB0) | (1 << DDB1);
+  c8:	84 b1       	in	r24, 0x04	; 4
+  ca:	83 60       	ori	r24, 0x03	; 3
+  cc:	84 b9       	out	0x04, r24	; 4
+	DDRD |= 0xFC;
+  ce:	8a b1       	in	r24, 0x0a	; 10
+  d0:	8c 6f       	ori	r24, 0xFC	; 252
+  d2:	8a b9       	out	0x0a, r24	; 10
+
+	// Inicializar ADC y SPI esclavo
+	ADC_init();
+  d4:	0e 94 48 00 	call	0x90	; 0x90 <ADC_init>
+	SPI_init(SPI_SLAVE, SPI_MSB_FIRST, SPI_CLOCK_IDLE_LOW, SPI_SAMPLE_ON_LEADING);
+  d8:	20 e0       	ldi	r18, 0x00	; 0
+  da:	40 e0       	ldi	r20, 0x00	; 0
+  dc:	60 e0       	ldi	r22, 0x00	; 0
+  de:	80 e0       	ldi	r24, 0x00	; 0
+  e0:	0e 94 cf 00 	call	0x19e	; 0x19e <SPI_init>
+	SPI_enable_interrupt();
+  e4:	0e 94 ec 00 	call	0x1d8	; 0x1d8 <SPI_enable_interrupt>
+	sei();
+  e8:	78 94       	sei
+  ea:	ff cf       	rjmp	.-2      	; 0xea <main+0x22>
+
+000000ec <refreshLEDs>:
+		// bucle vacío, todo se maneja en la ISR
+	}
+}
+
+void refreshLEDs(uint8_t value) {
+	PORTB = (PORTB & 0xFC) | ((value >> 6) & 0x03); // PB0–PB1
+  ec:	95 b1       	in	r25, 0x05	; 5
+  ee:	9c 7f       	andi	r25, 0xFC	; 252
+  f0:	28 2f       	mov	r18, r24
+  f2:	22 95       	swap	r18
+  f4:	26 95       	lsr	r18
+  f6:	26 95       	lsr	r18
+  f8:	23 70       	andi	r18, 0x03	; 3
+  fa:	92 2b       	or	r25, r18
+  fc:	95 b9       	out	0x05, r25	; 5
+	PORTD = (value << 2) & 0xFC;                    // PD2–PD7
+  fe:	90 e0       	ldi	r25, 0x00	; 0
+ 100:	88 0f       	add	r24, r24
+ 102:	99 1f       	adc	r25, r25
+ 104:	88 0f       	add	r24, r24
+ 106:	99 1f       	adc	r25, r25
+ 108:	8b b9       	out	0x0b, r24	; 11
+ 10a:	08 95       	ret
+
+0000010c <__vector_17>:
+}
+
+ISR(SPI_STC_vect) {
+ 10c:	1f 92       	push	r1
+ 10e:	0f 92       	push	r0
+ 110:	0f b6       	in	r0, 0x3f	; 63
+ 112:	0f 92       	push	r0
+ 114:	11 24       	eor	r1, r1
+ 116:	2f 93       	push	r18
+ 118:	3f 93       	push	r19
+ 11a:	4f 93       	push	r20
+ 11c:	5f 93       	push	r21
+ 11e:	6f 93       	push	r22
+ 120:	7f 93       	push	r23
+ 122:	8f 93       	push	r24
+ 124:	9f 93       	push	r25
+ 126:	af 93       	push	r26
+ 128:	bf 93       	push	r27
+ 12a:	cf 93       	push	r28
+ 12c:	ef 93       	push	r30
+ 12e:	ff 93       	push	r31
+	uint8_t received = SPDR;
+ 130:	ce b5       	in	r28, 0x2e	; 46
+
+	// Si el maestro manda dummy (0x00), respondemos con potenciómetro
+	if(received == 0x00) {
+ 132:	c1 11       	cpse	r28, r1
+ 134:	1e c0       	rjmp	.+60     	; 0x172 <__vector_17+0x66>
+		static uint8_t toggle = 0;
+		if(toggle == 0) {
+ 136:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 13a:	81 11       	cpse	r24, r1
+ 13c:	0d c0       	rjmp	.+26     	; 0x158 <__vector_17+0x4c>
+			uint16_t pot1 = ADC_read(0); // leer ADC0
+ 13e:	0e 94 4f 00 	call	0x9e	; 0x9e <ADC_read>
+			SPDR = (uint8_t)(pot1 >> 2); // convertir a 8 bits
+ 142:	96 95       	lsr	r25
+ 144:	87 95       	ror	r24
+ 146:	96 95       	lsr	r25
+ 148:	87 95       	ror	r24
+ 14a:	8e bd       	out	0x2e, r24	; 46
+			refreshLEDs((uint8_t)(pot1 >> 2)); // mostrar también en LEDs
+ 14c:	0e 94 76 00 	call	0xec	; 0xec <refreshLEDs>
+			toggle = 1;
+ 150:	81 e0       	ldi	r24, 0x01	; 1
+ 152:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 156:	11 c0       	rjmp	.+34     	; 0x17a <__vector_17+0x6e>
+			} else {
+			uint16_t pot2 = ADC_read(1); // leer ADC1
+ 158:	81 e0       	ldi	r24, 0x01	; 1
+ 15a:	0e 94 4f 00 	call	0x9e	; 0x9e <ADC_read>
+			SPDR = (uint8_t)(pot2 >> 2);
+ 15e:	96 95       	lsr	r25
+ 160:	87 95       	ror	r24
+ 162:	96 95       	lsr	r25
+ 164:	87 95       	ror	r24
+ 166:	8e bd       	out	0x2e, r24	; 46
+			refreshLEDs((uint8_t)(pot2 >> 2));
+ 168:	0e 94 76 00 	call	0xec	; 0xec <refreshLEDs>
+			toggle = 0;
+ 16c:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 170:	04 c0       	rjmp	.+8      	; 0x17a <__vector_17+0x6e>
+		}
+		} else {
+		// Si el maestro manda un valor real, mostrar en LEDs
+		refreshLEDs(received);
+ 172:	8c 2f       	mov	r24, r28
+ 174:	0e 94 76 00 	call	0xec	; 0xec <refreshLEDs>
+		SPDR = received; // eco opcional
+ 178:	ce bd       	out	0x2e, r28	; 46
+	}
+}
+ 17a:	ff 91       	pop	r31
+ 17c:	ef 91       	pop	r30
+ 17e:	cf 91       	pop	r28
+ 180:	bf 91       	pop	r27
+ 182:	af 91       	pop	r26
+ 184:	9f 91       	pop	r25
+ 186:	8f 91       	pop	r24
+ 188:	7f 91       	pop	r23
+ 18a:	6f 91       	pop	r22
+ 18c:	5f 91       	pop	r21
+ 18e:	4f 91       	pop	r20
+ 190:	3f 91       	pop	r19
+ 192:	2f 91       	pop	r18
+ 194:	0f 90       	pop	r0
+ 196:	0f be       	out	0x3f, r0	; 63
+ 198:	0f 90       	pop	r0
+ 19a:	1f 90       	pop	r1
+ 19c:	18 95       	reti
+
+0000019e <SPI_init>:
+ *  Author: crist
+ */ 
+#include "SPI.h"
+
+void SPI_init(uint8_t mode, uint8_t data_order, uint8_t clock_polarity, uint8_t clock_phase) {
+	if(mode == SPI_MASTER) {
+ 19e:	81 30       	cpi	r24, 0x01	; 1
+ 1a0:	31 f4       	brne	.+12     	; 0x1ae <SPI_init+0x10>
+		DDRB |= (1 << DDB3) | (1 << DDB5); // MOSI y SCK como salidas
+ 1a2:	84 b1       	in	r24, 0x04	; 4
+ 1a4:	88 62       	ori	r24, 0x28	; 40
+ 1a6:	84 b9       	out	0x04, r24	; 4
+		SPCR = (1 << SPE) | (1 << MSTR);
+ 1a8:	80 e5       	ldi	r24, 0x50	; 80
+ 1aa:	8c bd       	out	0x2c, r24	; 44
+ 1ac:	05 c0       	rjmp	.+10     	; 0x1b8 <SPI_init+0x1a>
+		} else {
+		DDRB |= (1 << DDB4); // MISO como salida
+ 1ae:	84 b1       	in	r24, 0x04	; 4
+ 1b0:	80 61       	ori	r24, 0x10	; 16
+ 1b2:	84 b9       	out	0x04, r24	; 4
+		SPCR = (1 << SPE);
+ 1b4:	80 e4       	ldi	r24, 0x40	; 64
+ 1b6:	8c bd       	out	0x2c, r24	; 44
+	}
+	
+	if(data_order == SPI_LSB_FIRST) SPCR |= (1 << DORD);
+ 1b8:	61 30       	cpi	r22, 0x01	; 1
+ 1ba:	19 f4       	brne	.+6      	; 0x1c2 <SPI_init+0x24>
+ 1bc:	8c b5       	in	r24, 0x2c	; 44
+ 1be:	80 62       	ori	r24, 0x20	; 32
+ 1c0:	8c bd       	out	0x2c, r24	; 44
+	if(clock_polarity == SPI_CLOCK_IDLE_HIGH) SPCR |= (1 << CPOL);
+ 1c2:	41 30       	cpi	r20, 0x01	; 1
+ 1c4:	19 f4       	brne	.+6      	; 0x1cc <SPI_init+0x2e>
+ 1c6:	8c b5       	in	r24, 0x2c	; 44
+ 1c8:	88 60       	ori	r24, 0x08	; 8
+ 1ca:	8c bd       	out	0x2c, r24	; 44
+	if(clock_phase == SPI_SAMPLE_ON_TRAILING) SPCR |= (1 << CPHA);
+ 1cc:	21 30       	cpi	r18, 0x01	; 1
+ 1ce:	19 f4       	brne	.+6      	; 0x1d6 <SPI_init+0x38>
+ 1d0:	8c b5       	in	r24, 0x2c	; 44
+ 1d2:	84 60       	ori	r24, 0x04	; 4
+ 1d4:	8c bd       	out	0x2c, r24	; 44
+ 1d6:	08 95       	ret
+
+000001d8 <SPI_enable_interrupt>:
+}
+
+void SPI_enable_interrupt(void) {
+	SPCR |= (1 << SPIE);
+ 1d8:	8c b5       	in	r24, 0x2c	; 44
+ 1da:	80 68       	ori	r24, 0x80	; 128
+ 1dc:	8c bd       	out	0x2c, r24	; 44
+ 1de:	08 95       	ret
+
+000001e0 <_exit>:
+ 1e0:	f8 94       	cli
+
+000001e2 <__stop_program>:
+ 1e2:	ff cf       	rjmp	.-2      	; 0x1e2 <__stop_program>
